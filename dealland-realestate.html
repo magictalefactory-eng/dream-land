@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DEAL LAND Real Estate & Builders – Lahore's trusted agency for buying, selling, renting & building properties in Bahria Town. 8+ years of experience. Call 0321 4997657.">
+<meta name="keywords" content="real estate Lahore, Bahria Town property, buy sell rent property Lahore, DEAL LAND, plots for sale Bahria Town, property builders Lahore">
+<meta name="author" content="DEAL LAND Real Estate and Builders">
+<meta property="og:title" content="DEAL LAND Real Estate & Builders | Bahria Town Lahore">
+<meta property="og:description" content="Buy, Sell, Rent, Build & Renovate with Lahore's most trusted real estate agency. 8 years of experience. 5-star rated.">
+<meta property="og:type" content="website">
+<title>DEAL LAND Real Estate & Builders | Bahria Town Lahore</title>
+
+<!-- Schema Markup for Local Business SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "DEAL LAND Real Estate and Builders",
+  "image": "",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4-C C, Commercial Zone Sector C Commercial Area Sector C Bahria Town",
+    "addressLocality": "Lahore",
+    "postalCode": "53720",
+    "addressCountry": "PK"
+  },
+  "telephone": "0321-4997657",
+  "openingHours": "Sa-Th 11:00-21:00",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "38"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D08A;
+    --gold-dark: #8B6914;
+    --navy: #0A1628;
+    --navy-mid: #112240;
+    --navy-light: #1A3460;
+    --cream: #F5F0E8;
+    --cream-dark: #EAE2D0;
+    --white: #FFFFFF;
+    --text-light: #CBD5E1;
+    --text-muted: #8899AA;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--navy);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ===== 3D CANVAS BACKGROUND ===== */
+  #canvas3d {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1.2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10, 22, 40, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    transition: all 0.4s ease;
+  }
+
+  nav.scrolled {
+    padding: 0.8rem 4rem;
+    background: rgba(10, 22, 40, 0.97);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+  }
+
+  .logo-sub {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 600 !important;
+    letter-spacing: 0.1em;
+    transition: background 0.3s, transform 0.2s !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    width: 24px; height: 2px;
+    background: var(--gold);
+    transition: all 0.3s;
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.97) 0%, rgba(10,22,40,0.7) 50%, rgba(17,34,64,0.9) 100%);
+    z-index: 1;
+  }
+
+  .hero-image-placeholder {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 20% 60%, rgba(26,52,96,0.5) 0%, transparent 60%),
+      linear-gradient(180deg, var(--navy) 0%, #0d1f3c 100%);
+    z-index: 0;
+  }
+
+  /* Building grid 3D effect */
+  .building-silhouettes {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 65%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 2rem;
+    animation: heroFadeIn 1.2s ease forwards;
+  }
+
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201, 168, 76, 0.12);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    animation: heroFadeIn 1.2s 0.2s ease both;
+  }
+
+  .hero-badge .star { color: var(--gold); font-size: 0.8rem; }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    animation: heroFadeIn 1.2s 0.3s ease both;
+  }
+
+  .hero-title span {
+    color: var(--gold);
+    font-weight: 600;
+    font-style: italic;
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    animation: heroFadeIn 1.2s 0.4s ease both;
+  }
+
+  .hero-description {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    animation: heroFadeIn 1.2s 0.5s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: heroFadeIn 1.2s 0.6s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.85rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(201,168,76,0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 0.85rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    gap: 3rem;
+    animation: heroFadeIn 1.2s 0.8s ease both;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat .num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .hero-stat .label {
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ===== SEARCH BAR ===== */
+  #search-section {
+    position: relative;
+    z-index: 10;
+    margin-top: -3rem;
+    padding: 0 2rem 4rem;
+  }
+
+  .search-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(17, 34, 64, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    transform: translateY(0);
+    animation: slideUp 0.8s 1s ease both;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .search-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .search-tab {
+    padding: 0.6rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .search-tab.active { color: var(--gold); }
+
+  .search-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .search-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 1rem;
+    align-items: end;
+  }
+
+  .search-field label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .search-field select,
+  .search-field input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    color: var(--cream);
+    padding: 0.65rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+  }
+
+  .search-field select:focus,
+  .search-field input:focus {
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .search-field select option { background: var(--navy-mid); }
+
+  .search-btn {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 0.65rem 2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+
+  .search-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { position: relative; z-index: 1; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .section-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .section-line {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.2rem auto 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ===== SERVICES ===== */
+  #services {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .service-card {
+    background: var(--navy-mid);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .service-card:hover {
+    background: rgba(201,168,76,0.08);
+    transform: translateY(-6px);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    display: block;
+    filter: saturate(0.8);
+  }
+
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ===== FEATURED PROPERTIES ===== */
+  #properties {
+    padding: 6rem 0;
+    background: var(--navy);
+  }
+
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+
+  .property-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .property-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(201,168,76,0.35);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.15);
+  }
+
+  .property-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #1a3460 0%, #112240 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .property-image-placeholder {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #1a3460 0%, #0e1f3a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .property-image-placeholder::after {
+    content: 'ADD IMAGE';
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: rgba(201,168,76,0.3);
+    border: 1px dashed rgba(201,168,76,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+  }
+
+  .property-badge {
+    position: absolute;
+    top: 1rem; left: 1rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 1px;
+    z-index: 2;
+  }
+
+  .property-badge.rent { background: #4A90D9; color: white; }
+  .property-badge.new { background: #27AE60; color: white; }
+
+  .property-info {
+    padding: 1.5rem;
+  }
+
+  .property-type {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .property-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+
+  .property-location {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .property-features {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .prop-feat {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .property-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .property-price {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .property-price-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    display: block;
+  }
+
+  .property-cta {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .property-cta:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .properties-cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  /* ===== WHY CHOOSE US ===== */
+  #why-us {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%);
+    overflow: hidden;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .why-left .section-header { text-align: left; }
+  .why-left .section-line { margin-left: 0; }
+
+  .why-left p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .why-features {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .why-feat {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .why-feat:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.25);
+    transform: translateX(6px);
+  }
+
+  .why-feat-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .why-feat h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .why-feat p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .why-right {
+    position: relative;
+    height: 500px;
+  }
+
+  /* 3D rotating property cube */
+  .cube-scene {
+    width: 200px;
+    height: 200px;
+    perspective: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCube 12s linear infinite;
+  }
+
+  @keyframes rotateCube {
+    from { transform: rotateX(15deg) rotateY(0deg); }
+    to { transform: rotateX(15deg) rotateY(360deg); }
+  }
+
+  .cube-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(201,168,76,0.4);
+    background: rgba(17,34,64,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--gold);
+    text-align: center;
+    padding: 1rem;
+    line-height: 1.3;
+    backdrop-filter: blur(4px);
+  }
+
+  .cube-face.front  { transform: translateZ(100px); }
+  .cube-face.back   { transform: rotateY(180deg) translateZ(100px); }
+  .cube-face.left   { transform: rotateY(-90deg) translateZ(100px); }
+  .cube-face.right  { transform: rotateY(90deg) translateZ(100px); }
+  .cube-face.top    { transform: rotateX(90deg) translateZ(100px); background: rgba(201,168,76,0.08); }
+  .cube-face.bottom { transform: rotateX(-90deg) translateZ(100px); background: rgba(201,168,76,0.04); }
+
+  .stats-overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-content: center;
+    padding: 1rem;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  #testimonials {
+    padding: 6rem 0;
+    background: var(--navy-mid);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .testimonial-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+  }
+
+  .testimonial-card::before {
+    content: '"';
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: rgba(201,168,76,0.1);
+    position: absolute;
+    top: -0.5rem;
+    left: 1.5rem;
+    line-height: 1;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .author-name {
+    font-weight: 500;
+    color: var(--white);
+    font-size: 0.9rem;
+  }
+
+  .author-location {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ===== PROCESS ===== */
+  #process {
+    padding: 6rem 0;
+    background: var(--navy);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 3rem;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3) 20%, rgba(201,168,76,0.3) 80%, transparent);
+    z-index: 0;
+  }
+
+  .process-step {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold);
+    background: var(--navy);
+    transition: all 0.3s;
+  }
+
+  .process-step:hover .step-number {
+    background: var(--gold);
+    color: var(--navy);
+    transform: scale(1.1);
+  }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ===== AREAS ===== */
+  #areas {
+    padding: 6rem 0;
+    background: var(--navy-mid);
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .area-card {
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 2px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .area-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: rgba(201,168,76,0.06);
+    transform: translateY(-4px);
+  }
+
+  .area-icon { font-size: 1.6rem; margin-bottom: 0.6rem; display: block; }
+
+  .area-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+
+  .area-props {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  /* ===== CTA BANNER ===== */
+  #cta-banner {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .cta-content h2 strong {
+    font-weight: 700;
+    display: block;
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+    color: var(--navy-light);
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-dark {
+    background: var(--navy);
+    color: var(--gold);
+    padding: 0.85rem 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-dark:hover {
+    background: var(--navy-mid);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--navy);
+    padding: 0.85rem 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-white:hover {
+    background: var(--cream);
+    transform: translateY(-3px);
+  }
+
+  /* ===== CONTACT ===== */
+  #contact {
+    padding: 6rem 0;
+    background: var(--navy);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-info p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .contact-item:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.25);
+  }
+
+  .contact-item-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-item h5 {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-item p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .contact-item a {
+    color: var(--text-light);
+    text-decoration: none;
+  }
+
+  .contact-item a:hover { color: var(--gold); }
+
+  .social-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .contact-form {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+
+  .contact-form h4 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.12);
+    color: var(--cream);
+    padding: 0.7rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: vertical;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .form-group select option { background: var(--navy-mid); }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 0.9rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .form-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(201,168,76,0.2);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #060f1e;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 4rem 0 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .logo-text {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 280px;
+  }
+
+  .footer-col h5 {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 300;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201,168,76,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+  /* ===== FLOATING ELEMENTS ===== */
+  .floating-call {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    background: var(--gold);
+    color: var(--navy);
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(201,168,76,0.4);
+    animation: pulse 2s infinite;
+    transition: all 0.3s;
+  }
+
+  .floating-call:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.5);
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
+    50% { box-shadow: 0 8px 50px rgba(201,168,76,0.7), 0 0 0 10px rgba(201,168,76,0.1); }
+  }
+
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 2rem;
+    z-index: 999;
+    background: #25D366;
+    color: white;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s;
+  }
+
+  .whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 40px rgba(37,211,102,0.5);
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 968px) {
+    nav { padding: 1rem 1.5rem; }
+    nav.scrolled { padding: 0.7rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,22,40,0.98);
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 999;
+    }
+
+    .nav-links.open a { font-size: 1.2rem; }
+
+    .hero-stats { gap: 1.5rem; }
+    .search-fields { grid-template-columns: 1fr 1fr; }
+    .search-fields .search-btn { grid-column: 1 / -1; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-right { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .process-steps::before { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-stats { bottom: 1.5rem; gap: 1rem; }
+    .hero-stat .num { font-size: 1.6rem; }
+    .search-fields { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .properties-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 3D Background Canvas -->
+<canvas id="canvas3d"></canvas>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="42" height="42" rx="4" fill="rgba(201,168,76,0.1)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+      <path d="M7 30L14 18L21 25L28 14L35 30H7Z" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
+      <rect x="17" y="22" width="8" height="8" rx="1" fill="#C9A84C" opacity="0.8"/>
+      <path d="M10 22L14 13L18 22" stroke="#C9A84C" stroke-width="1.2" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <div>
+      <span class="logo-text">DEAL LAND</span>
+      <span class="logo-sub">Real Estate & Builders</span>
+    </div>
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#why-us">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-image-placeholder"></div>
+  <div class="hero-bg-overlay"></div>
+
+  <!-- Building Silhouette SVG -->
+  <div class="building-silhouettes">
+    <svg width="100%" height="100%" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="buildingGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1A3460" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#0A1628" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <!-- Buildings -->
+      <rect x="50" y="200" width="80" height="300" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.12)" stroke-width="1"/>
+      <rect x="60" y="210" width="15" height="12" fill="rgba(201,168,76,0.15)"/>
+      <rect x="85" y="210" width="15" height="12" fill="rgba(201,168,76,0.15)"/>
+      <rect x="60" y="235" width="15" height="12" fill="rgba(201,168,76,0.08)"/>
+      <rect x="85" y="235" width="15" height="12" fill="rgba(201,168,76,0.2)"/>
+      <rect x="60" y="260" width="15" height="12" fill="rgba(201,168,76,0.15)"/>
+      <rect x="85" y="260" width="15" height="12" fill="rgba(201,168,76,0.08)"/>
+      <rect x="60" y="285" width="15" height="12" fill="rgba(201,168,76,0.2)"/>
+      <rect x="85" y="285" width="15" height="12" fill="rgba(201,168,76,0.15)"/>
+
+      <rect x="150" y="120" width="100" height="380" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.12)" stroke-width="1"/>
+      <rect x="158" y="130" width="18" height="14" fill="rgba(201,168,76,0.2)"/>
+      <rect x="184" y="130" width="18" height="14" fill="rgba(201,168,76,0.1)"/>
+      <rect x="222" y="130" width="18" height="14" fill="rgba(201,168,76,0.15)"/>
+      <rect x="158" y="156" width="18" height="14" fill="rgba(201,168,76,0.08)"/>
+      <rect x="184" y="156" width="18" height="14" fill="rgba(201,168,76,0.2)"/>
+      <rect x="222" y="156" width="18" height="14" fill="rgba(201,168,76,0.15)"/>
+      <rect x="158" y="182" width="18" height="14" fill="rgba(201,168,76,0.15)"/>
+      <rect x="184" y="182" width="18" height="14" fill="rgba(201,168,76,0.08)"/>
+      <rect x="222" y="182" width="18" height="14" fill="rgba(201,168,76,0.2)"/>
+      <rect x="165" y="100" width="70" height="20" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+
+      <rect x="280" y="180" width="60" height="320" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+
+      <rect x="370" y="80" width="120" height="420" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+      <rect x="380" y="90" width="20" height="16" fill="rgba(201,168,76,0.25)"/>
+      <rect x="412" y="90" width="20" height="16" fill="rgba(201,168,76,0.15)"/>
+      <rect x="450" y="90" width="20" height="16" fill="rgba(201,168,76,0.2)"/>
+      <rect x="380" y="120" width="20" height="16" fill="rgba(201,168,76,0.1)"/>
+      <rect x="412" y="120" width="20" height="16" fill="rgba(201,168,76,0.25)"/>
+      <rect x="450" y="120" width="20" height="16" fill="rgba(201,168,76,0.15)"/>
+      <rect x="380" y="150" width="20" height="16" fill="rgba(201,168,76,0.2)"/>
+      <rect x="412" y="150" width="20" height="16" fill="rgba(201,168,76,0.1)"/>
+      <rect x="450" y="150" width="20" height="16" fill="rgba(201,168,76,0.25)"/>
+      <rect x="430" y="50" width="30" height="30" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+      <circle cx="445" cy="40" r="8" fill="rgba(201,168,76,0.2)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+
+      <rect x="520" y="140" width="90" height="360" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+
+      <rect x="640" y="60" width="140" height="440" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.18)" stroke-width="1"/>
+      <rect x="650" y="70" width="24" height="18" fill="rgba(201,168,76,0.2)"/>
+      <rect x="684" y="70" width="24" height="18" fill="rgba(201,168,76,0.1)"/>
+      <rect x="734" y="70" width="24" height="18" fill="rgba(201,168,76,0.25)"/>
+      <rect x="650" y="100" width="24" height="18" fill="rgba(201,168,76,0.15)"/>
+      <rect x="684" y="100" width="24" height="18" fill="rgba(201,168,76,0.2)"/>
+      <rect x="734" y="100" width="24" height="18" fill="rgba(201,168,76,0.08)"/>
+
+      <rect x="810" y="160" width="70" height="340" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+
+      <rect x="910" y="90" width="110" height="410" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+      <rect x="920" y="100" width="20" height="16" fill="rgba(201,168,76,0.2)"/>
+      <rect x="950" y="100" width="20" height="16" fill="rgba(201,168,76,0.12)"/>
+      <rect x="980" y="100" width="20" height="16" fill="rgba(201,168,76,0.2)"/>
+      <rect x="920" y="130" width="20" height="16" fill="rgba(201,168,76,0.08)"/>
+      <rect x="950" y="130" width="20" height="16" fill="rgba(201,168,76,0.22)"/>
+      <rect x="980" y="130" width="20" height="16" fill="rgba(201,168,76,0.15)"/>
+
+      <rect x="1050" y="200" width="80" height="300" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+
+      <rect x="1160" y="110" width="130" height="390" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+      <rect x="1170" y="120" width="22" height="16" fill="rgba(201,168,76,0.18)"/>
+      <rect x="1204" y="120" width="22" height="16" fill="rgba(201,168,76,0.1)"/>
+      <rect x="1248" y="120" width="22" height="16" fill="rgba(201,168,76,0.22)"/>
+
+      <rect x="1320" y="170" width="80" height="330" fill="url(#buildingGrad)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+
+      <!-- Ground -->
+      <rect x="0" y="498" width="1400" height="4" fill="rgba(201,168,76,0.15)"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="star">★★★★★</span>
+      5.0 Google Rating · 8 Years of Excellence
+    </div>
+    <h1 class="hero-title">
+      Your Dream Property
+      <span>Awaits in Lahore</span>
+    </h1>
+    <p class="hero-subtitle">Deal Land Real Estate & Builders · Bahria Town</p>
+    <p class="hero-description">
+      Pakistan's most trusted real estate family. We help you buy, sell, rent, build and renovate your dream property with unmatched expertise and care.
+    </p>
+    <div class="hero-actions">
+      <a href="#properties" class="btn-primary">
+        🏘 Browse Properties
+      </a>
+      <a href="tel:03214997657" class="btn-outline">📞 Call: 0321 4997657</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num" data-count="8">0</span>
+      <span class="label">Years Experience</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" data-count="500">0</span>
+      <span class="label">Happy Clients</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" data-count="38">0</span>
+      <span class="label">Google Reviews</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" data-count="5">0</span>
+      <span class="label">Star Rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- Search -->
+<section id="search-section">
+  <div class="search-container">
+    <div class="search-tabs">
+      <button class="search-tab active" onclick="setTab(this,'buy')">Buy</button>
+      <button class="search-tab" onclick="setTab(this,'rent')">Rent</button>
+      <button class="search-tab" onclick="setTab(this,'sell')">Sell</button>
+      <button class="search-tab" onclick="setTab(this,'build')">Build</button>
+    </div>
+    <div class="search-fields">
+      <div class="search-field">
+        <label>Property Type</label>
+        <select>
+          <option value="">All Types</option>
+          <option>Residential Plot</option>
+          <option>Commercial Plot</option>
+          <option>House / Villa</option>
+          <option>Apartment / Flat</option>
+          <option>Shop / Office</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Location</label>
+        <select>
+          <option value="">All Areas</option>
+          <option>Bahria Town Sector A</option>
+          <option>Bahria Town Sector B</option>
+          <option>Bahria Town Sector C</option>
+          <option>Bahria Town Sector G</option>
+          <option>DHA Lahore</option>
+          <option>Gulberg Lahore</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Budget</label>
+        <select>
+          <option value="">Any Budget</option>
+          <option>Under 50 Lac</option>
+          <option>50 Lac – 1 Crore</option>
+          <option>1 – 2 Crore</option>
+          <option>2 – 5 Crore</option>
+          <option>5 Crore+</option>
+        </select>
+      </div>
+      <button class="search-btn" onclick="handleSearch()">🔍 Search</button>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Complete Real Estate <em>Solutions</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <span class="service-icon">🏠</span>
+        <div class="service-name">Buy Property</div>
+        <p class="service-desc">Find your perfect home or investment property. Residential plots, houses, apartments in prime locations.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💰</span>
+        <div class="service-name">Sell Property</div>
+        <p class="service-desc">Get the best market value for your property. We handle marketing, viewings, and negotiations for you.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔑</span>
+        <div class="service-name">Rent / Lease</div>
+        <p class="service-desc">Short & long-term rental services. Residential and commercial properties in all major areas.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏗</span>
+        <div class="service-name">Build</div>
+        <p class="service-desc">Turn your plot into your dream home. Full construction services from design to completion.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔨</span>
+        <div class="service-name">Renovate</div>
+        <p class="service-desc">Modernize and upgrade your existing property. Interior, exterior, and structural renovations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Properties -->
+<section id="properties">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Latest Listings</span>
+      <h2 class="section-title">Featured <em>Properties</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="properties-grid">
+
+      <!-- Property 1 -->
+      <div class="property-card reveal">
+        <div class="property-image-placeholder">
+          <span class="property-badge">For Sale</span>
+        </div>
+        <div class="property-info">
+          <div class="property-type">Residential Plot · Sector G</div>
+          <h3 class="property-title">Prime Plot – Bahria Town Sector G</h3>
+          <div class="property-location">📍 Sector G, Bahria Town Lahore</div>
+          <div class="property-features">
+            <span class="prop-feat">📐 10 Marla</span>
+            <span class="prop-feat">✅ On Ground</span>
+            <span class="prop-feat">🏗 Ready to Build</span>
+          </div>
+          <div class="property-footer">
+            <div>
+              <span class="property-price">ADD PRICE</span>
+              <span class="property-price-label">Negotiable</span>
+            </div>
+            <a href="#contact" class="property-cta">Inquire Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property 2 -->
+      <div class="property-card reveal" style="transition-delay:0.1s">
+        <div class="property-image-placeholder">
+          <span class="property-badge new">New</span>
+        </div>
+        <div class="property-info">
+          <div class="property-type">House · Sector C</div>
+          <h3 class="property-title">Fully Furnished House – Sector C</h3>
+          <div class="property-location">📍 Sector C, Bahria Town Lahore</div>
+          <div class="property-features">
+            <span class="prop-feat">🛏 5 Beds</span>
+            <span class="prop-feat">🚿 4 Baths</span>
+            <span class="prop-feat">🚗 2 Car</span>
+          </div>
+          <div class="property-footer">
+            <div>
+              <span class="property-price">ADD PRICE</span>
+              <span class="property-price-label">All Inclusive</span>
+            </div>
+            <a href="#contact" class="property-cta">Inquire Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property 3 -->
+      <div class="property-card reveal" style="transition-delay:0.2s">
+        <div class="property-image-placeholder">
+          <span class="property-badge rent">For Rent</span>
+        </div>
+        <div class="property-info">
+          <div class="property-type">Commercial · Sector C</div>
+          <h3 class="property-title">Prime Commercial Shop – Sector C</h3>
+          <div class="property-location">📍 Commercial Zone, Bahria Town</div>
+          <div class="property-features">
+            <span class="prop-feat">📐 300 sqft</span>
+            <span class="prop-feat">🏬 Ground Floor</span>
+            <span class="prop-feat">🔌 All Utilities</span>
+          </div>
+          <div class="property-footer">
+            <div>
+              <span class="property-price">ADD PRICE</span>
+              <span class="property-price-label">Per Month</span>
+            </div>
+            <a href="#contact" class="property-cta">Inquire Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="properties-cta reveal">
+      <a href="#contact" class="btn-primary">View All Properties &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section id="why-us">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-left reveal-left">
+        <div class="section-header">
+          <span class="section-tag">Why Deal Land</span>
+          <h2 class="section-title">Trusted by <em>Families</em><br>Across Lahore</h2>
+          <div class="section-line"></div>
+        </div>
+        <p>
+          For over 8 years, DEAL LAND has been the go-to real estate partner for families and investors in Bahria Town and across Lahore. As a family business, we understand what home truly means.
+        </p>
+        <p>
+          Whether you're buying your first home, selling an investment, or building from the ground up — our experienced team ensures a smooth, transparent, and rewarding experience every time.
+        </p>
+        <div class="why-features">
+          <div class="why-feat">
+            <span class="why-feat-icon">🏆</span>
+            <div>
+              <h4>8+ Years of Expertise</h4>
+              <p>Deep market knowledge built through thousands of successful transactions in Lahore's premium areas.</p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <span class="why-feat-icon">👨‍👩‍👧‍👦</span>
+            <div>
+              <h4>Family-Run Business</h4>
+              <p>We treat every client like family. Personal attention, honest advice, and long-term relationships.</p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <span class="why-feat-icon">📋</span>
+            <div>
+              <h4>Full Legal Assistance</h4>
+              <p>Complete documentation, NOC verification, and transfer assistance handled by our legal team.</p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <span class="why-feat-icon">💎</span>
+            <div>
+              <h4>Luxury & Affordable</h4>
+              <p>From budget plots to premium villas — we cover all price ranges with the same level of dedication.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-right reveal-right">
+        <div class="cube-scene">
+          <div class="cube">
+            <div class="cube-face front">
+              <div style="text-align:center">
+                <div style="font-size:2rem;margin-bottom:0.5rem">8+</div>
+                <div style="font-size:0.8rem;color:var(--text-light);font-family:var(--font-body)">Years of<br>Experience</div>
+              </div>
+            </div>
+            <div class="cube-face back">
+              <div style="text-align:center">
+                <div style="font-size:2rem;margin-bottom:0.5rem">★ 5.0</div>
+                <div style="font-size:0.8rem;color:var(--text-light);font-family:var(--font-body)">Google<br>Rating</div>
+              </div>
+            </div>
+            <div class="cube-face left">
+              <div style="text-align:center">
+                <div style="font-size:2rem;margin-bottom:0.5rem">500+</div>
+                <div style="font-size:0.8rem;color:var(--text-light);font-family:var(--font-body)">Happy<br>Clients</div>
+              </div>
+            </div>
+            <div class="cube-face right">
+              <div style="text-align:center">
+                <div style="font-size:2rem;margin-bottom:0.5rem">5</div>
+                <div style="font-size:0.8rem;color:var(--text-light);font-family:var(--font-body)">Services<br>Offered</div>
+              </div>
+            </div>
+            <div class="cube-face top"></div>
+            <div class="cube-face bottom"></div>
+          </div>
+        </div>
+        <!-- Floating stats around cube -->
+        <div style="position:absolute;top:1rem;right:1rem;background:rgba(17,34,64,0.9);border:1px solid rgba(201,168,76,0.2);padding:1rem 1.5rem;border-radius:4px;text-align:center">
+          <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:600">5.0</div>
+          <div style="font-size:0.7rem;color:var(--text-muted);letter-spacing:0.1em">GOOGLE RATING</div>
+          <div style="color:var(--gold);font-size:0.9rem;margin-top:4px">★★★★★</div>
+        </div>
+        <div style="position:absolute;bottom:1rem;left:1rem;background:rgba(17,34,64,0.9);border:1px solid rgba(201,168,76,0.2);padding:1rem 1.5rem;border-radius:4px;text-align:center">
+          <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:600">38+</div>
+          <div style="font-size:0.7rem;color:var(--text-muted);letter-spacing:0.1em">REVIEWS</div>
+        </div>
+        <div style="position:absolute;bottom:1rem;right:1rem;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);padding:1rem 1.5rem;border-radius:4px;text-align:center">
+          <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:600">100%</div>
+          <div style="font-size:0.7rem;color:var(--text-muted);letter-spacing:0.1em">SATISFACTION</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Simple & Transparent</span>
+      <h2 class="section-title">How It <em>Works</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-number">01</div>
+        <div class="step-title">Consultation</div>
+        <p class="step-desc">Share your requirements, budget, and goals with our experts in a free consultation call.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.1s">
+        <div class="step-number">02</div>
+        <div class="step-title">Property Search</div>
+        <p class="step-desc">We shortlist properties matching your criteria from our extensive portfolio.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.2s">
+        <div class="step-number">03</div>
+        <div class="step-title">Site Visit</div>
+        <p class="step-desc">Tour properties in person with our experienced agents who guide you thoroughly.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.3s">
+        <div class="step-number">04</div>
+        <div class="step-title">Negotiation</div>
+        <p class="step-desc">We negotiate the best possible deal on your behalf to maximize your value.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.4s">
+        <div class="step-number">05</div>
+        <div class="step-title">Documentation</div>
+        <p class="step-desc">Full legal assistance for all paperwork, verification, and transfer procedures.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.5s">
+        <div class="step-number">06</div>
+        <div class="step-title">Handover</div>
+        <p class="step-desc">Celebrate as we hand over the keys to your new home or investment property!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas We Serve -->
+<section id="areas">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Our Presence</span>
+      <h2 class="section-title">Areas We <em>Serve</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="areas-grid reveal">
+      <div class="area-card">
+        <span class="area-icon">🏙</span>
+        <div class="area-name">Sector A</div>
+        <div class="area-props">Bahria Town Lahore</div>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🏘</span>
+        <div class="area-name">Sector B</div>
+        <div class="area-props">Bahria Town Lahore</div>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🏢</span>
+        <div class="area-name">Sector C</div>
+        <div class="area-props">Bahria Town Lahore</div>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🌆</span>
+        <div class="area-name">Sector G</div>
+        <div class="area-props">Bahria Town Lahore</div>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🏠</span>
+        <div class="area-name">DHA Lahore</div>
+        <div class="area-props">Defence Housing Authority</div>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🌇</span>
+        <div class="area-name">Gulberg</div>
+        <div class="area-props">Central Lahore</div>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🏗</span>
+        <div class="area-name">Model Town</div>
+        <div class="area-props">Lahore</div>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🌃</span>
+        <div class="area-name">Lake City</div>
+        <div class="area-props">Lahore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">What Clients Say</span>
+      <h2 class="section-title">Real <em>Reviews</em> from Real Clients</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Excellent service! Deal Land helped me find the perfect plot in Sector G. The team was professional, transparent, and guided me through every step. Highly recommended!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AK</div>
+          <div>
+            <div class="author-name">Ahmed Khan</div>
+            <div class="author-location">Bahria Town, Lahore · Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:0.1s">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">As a first-time buyer, I was nervous but the team at Deal Land made it seamless. They handled all the documentation and got me a great price. A truly family-friendly business.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SR</div>
+          <div>
+            <div class="author-name">Sara Raza</div>
+            <div class="author-location">Sector C, Lahore · Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:0.2s">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">I sold my house through Deal Land and got above market price! Their marketing and negotiation skills are exceptional. Will definitely use their services again for my next investment.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MI</div>
+          <div>
+            <div class="author-name">M. Imran</div>
+            <div class="author-location">DHA Lahore · Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section id="cta-banner">
+  <div class="container">
+    <div class="cta-content reveal">
+      <h2>
+        Ready to Find Your<br>
+        <strong>Dream Property?</strong>
+      </h2>
+      <p>
+        Talk to our experts today. Free consultation, no obligation. 
+        We serve Bahria Town, DHA, Gulberg and all of Lahore.
+      </p>
+      <div class="cta-actions">
+        <a href="tel:03214997657" class="btn-dark">📞 Call: 0321 4997657</a>
+        <a href="https://wa.me/923214997657" class="btn-white">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Get in Touch</span>
+      <h2 class="section-title">Contact <em>Us</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h3>We're Here<br>For You</h3>
+        <p>Visit our office in Bahria Town Sector C, or reach out via phone, WhatsApp, or our social media channels. Our team is available 7 days a week.</p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-item-icon">📍</span>
+            <div>
+              <h5>Office Address</h5>
+              <p>4-C C, Commercial Zone Sector C<br>Bahria Town, Lahore 53720</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">📞</span>
+            <div>
+              <h5>Phone / WhatsApp</h5>
+              <p><a href="tel:03214997657">0321 4997657</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">🕐</span>
+            <div>
+              <h5>Business Hours</h5>
+              <p>Saturday – Thursday: 11:00 AM – 9:00 PM<br>Friday: By Appointment</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://youtube.com" target="_blank" class="social-link" title="YouTube" rel="noopener">YT</a>
+          <a href="https://tiktok.com" target="_blank" class="social-link" title="TikTok" rel="noopener">TK</a>
+          <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook" rel="noopener">FB</a>
+          <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram" rel="noopener">IG</a>
+        </div>
+      </div>
+
+      <div class="contact-form reveal-right">
+        <h4>Send an Inquiry</h4>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="03XX XXXXXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>I'm Interested In</label>
+          <select>
+            <option value="">Select a service</option>
+            <option>Buying a Property</option>
+            <option>Selling My Property</option>
+            <option>Renting / Leasing</option>
+            <option>Construction / Build</option>
+            <option>Renovation</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Tell us what you're looking for..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleFormSubmit(this)">Send Inquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">DEAL LAND</span>
+        <p>Put the power of our 8 years of experience and wisdom to work for your dream home. We offer Sell, Buy, Build, Renovate and Rent services across Lahore.</p>
+        <div class="social-links">
+          <a href="https://youtube.com" target="_blank" class="social-link" rel="noopener">YT</a>
+          <a href="https://tiktok.com" target="_blank" class="social-link" rel="noopener">TK</a>
+          <a href="https://facebook.com" target="_blank" class="social-link" rel="noopener">FB</a>
+          <a href="https://instagram.com" target="_blank" class="social-link" rel="noopener">IG</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul class="footer-links">
+          <li><a href="#services">Buy Property</a></li>
+          <li><a href="#services">Sell Property</a></li>
+          <li><a href="#services">Rent / Lease</a></li>
+          <li><a href="#services">Construction</a></li>
+          <li><a href="#services">Renovation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Areas</h5>
+        <ul class="footer-links">
+          <li><a href="#areas">Bahria Town</a></li>
+          <li><a href="#areas">DHA Lahore</a></li>
+          <li><a href="#areas">Gulberg</a></li>
+          <li><a href="#areas">Model Town</a></li>
+          <li><a href="#areas">Lake City</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul class="footer-links">
+          <li><a href="#why-us">About Us</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#properties">All Properties</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <a href="#">DEAL LAND Real Estate & Builders</a>. All rights reserved. Bahria Town, Lahore.</p>
+      <p>Designed for Hostinger WordPress · SEO Optimized</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Buttons -->
+<a href="tel:03214997657" class="floating-call" title="Call Now" aria-label="Call Deal Land">📞</a>
+<a href="https://wa.me/923214997657" class="whatsapp-btn" title="WhatsApp" target="_blank" rel="noopener" aria-label="WhatsApp Deal Land">💬</a>
+
+<script>
+// ==============================
+// 3D CANVAS BACKGROUND
+// ==============================
+const canvas = document.getElementById('canvas3d');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let animFrame;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 1.5 + 0.3;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.3;
+    this.opacity = Math.random() * 0.5 + 0.1;
+    this.isGold = Math.random() > 0.7;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.isGold
+      ? `rgba(201, 168, 76, ${this.opacity})`
+      : `rgba(255, 255, 255, ${this.opacity * 0.5})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+// Grid lines
+function drawGrid() {
+  const cols = 12;
+  const rows = 8;
+  const scrollY = window.scrollY * 0.1;
+  ctx.strokeStyle = 'rgba(201,168,76,0.04)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= cols; i++) {
+    ctx.beginPath();
+    ctx.moveTo((canvas.width / cols) * i, 0);
+    ctx.lineTo((canvas.width / cols) * i, canvas.height);
+    ctx.stroke();
+  }
+  for (let j = 0; j <= rows; j++) {
+    ctx.beginPath();
+    ctx.moveTo(0, (canvas.height / rows) * j + (scrollY % (canvas.height / rows)));
+    ctx.lineTo(canvas.width, (canvas.height / rows) * j + (scrollY % (canvas.height / rows)));
+    ctx.stroke();
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawGrid();
+  particles.forEach(p => { p.update(); p.draw(); });
+  // Draw connections
+  particles.forEach((p, i) => {
+    particles.slice(i + 1, i + 5).forEach(p2 => {
+      const dx = p.x - p2.x, dy = p.y - p2.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 100) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = `rgba(201,168,76,${(1 - dist / 100) * 0.08})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    });
+  });
+  animFrame = requestAnimationFrame(animate);
+}
+animate();
+
+// ==============================
+// NAVBAR SCROLL
+// ==============================
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// ==============================
+// HAMBURGER MENU
+// ==============================
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// ==============================
+// SCROLL REVEAL
+// ==============================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// ==============================
+// COUNTER ANIMATION
+// ==============================
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count'));
+      let start = 0;
+      const duration = 1800;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target) + (target === 5 ? '★' : target >= 100 ? '+' : target === 8 ? '+' : '');
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ==============================
+// SEARCH TABS
+// ==============================
+function setTab(btn, tab) {
+  document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function handleSearch() {
+  const fields = document.querySelectorAll('.search-field select');
+  const vals = [...fields].map(f => f.value).filter(Boolean);
+  if (vals.length === 0) {
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  } else {
+    document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// ==============================
+// CONTACT FORM
+// ==============================
+function handleFormSubmit(btn) {
+  const form = btn.closest('.contact-form');
+  const inputs = form.querySelectorAll('input, select, textarea');
+  const name = form.querySelector('input[type="text"]').value.trim();
+  const phone = form.querySelector('input[type="tel"]').value.trim();
+  
+  if (!name || !phone) {
+    btn.textContent = '⚠ Please fill Name & Phone';
+    btn.style.background = '#c0392b';
+    btn.style.color = 'white';
+    setTimeout(() => {
+      btn.textContent = 'Send Inquiry →';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2500);
+    return;
+  }
+  
+  btn.textContent = '✓ Inquiry Sent!';
+  btn.style.background = '#27ae60';
+  btn.style.color = 'white';
+  btn.disabled = true;
+  
+  setTimeout(() => {
+    inputs.forEach(i => i.value = '');
+    btn.textContent = 'Send Inquiry →';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.disabled = false;
+  }, 3000);
+}
+
+// ==============================
+// SMOOTH ANCHOR SCROLLING
+// ==============================
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
